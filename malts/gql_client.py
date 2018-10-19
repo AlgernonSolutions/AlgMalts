@@ -2,7 +2,7 @@ import json
 
 import requests
 
-from gql.gql_notary import GqlNotary
+from gql_notary import GqlNotary
 
 
 class GqlClient:
@@ -17,7 +17,6 @@ class GqlClient:
     def query(self, query_text, variables):
         headers = self._notary.generate_headers(query_text, variables)
         payload = {'query': query_text, 'variables': variables}
-        print('gql fire payload: %s' % payload)
         request = requests.post(self._gql_url, headers=headers, json=payload)
         if request.status_code != 200:
             raise RuntimeError(request.content)

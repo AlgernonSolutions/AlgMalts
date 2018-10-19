@@ -1,7 +1,8 @@
-from MaltegoTransform import *
+
 import sys
 
-from gql.gql_client import GqlClient
+from MaltegoTransform import MaltegoTransform
+from gql_client import GqlClient
 
 query = '''
     query expandVertex($internal_id: ID!){

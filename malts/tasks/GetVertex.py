@@ -1,4 +1,4 @@
-from MaltegoTransform import *
+from malts.MaltegoTransform import *
 import sys
 
 maltego_transform = MaltegoTransform()
