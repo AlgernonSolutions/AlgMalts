@@ -33,6 +33,6 @@ variables = {
 
 gql_client = GqlClient()
 results = gql_client.query(query, variables)
-print(results)
+maltego_transform.addUIMessage(results)
 maltego_transform.addUIMessage("completed!")
 maltego_transform.returnOutput()
