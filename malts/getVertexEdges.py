@@ -30,7 +30,7 @@ vertex_internal_id = maltego_transform.getVar('internal_id')
 variables = {
     'internal_id': vertex_internal_id
 }
-
+maltego_transform.addEntity('algernon.Vertex', 'peaches')
 gql_client = GqlClient()
 results = gql_client.query(query, variables)
 maltego_transform.addUIMessage(json.dumps(results))
