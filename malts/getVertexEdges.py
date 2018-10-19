@@ -1,4 +1,4 @@
-
+import json
 import sys
 
 from MaltegoTransform import MaltegoTransform
@@ -33,6 +33,6 @@ variables = {
 
 gql_client = GqlClient()
 results = gql_client.query(query, variables)
-maltego_transform.addUIMessage(results)
+maltego_transform.addUIMessage(json.dumps(results))
 maltego_transform.addUIMessage("completed!")
 maltego_transform.returnOutput()
