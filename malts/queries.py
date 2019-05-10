@@ -1,0 +1,84 @@
+GET_VERTEX = '''
+    query getVertex($internal_id: ID!, $token: ID){
+        vertex(internal_id: $internal_id, token: $token){
+            vertex_type
+            connected_edges{
+            edges{
+              inbound{
+                internal_id
+                edge_label
+                from_vertex{
+                  internal_id
+                  vertex_type
+                  vertex_properties{
+                    property_name
+                    property_value{
+                        data_type
+                        property_value
+                    }
+                  }
+                }
+              }
+            outbound{
+                internal_id
+                edge_label
+                to_vertex{
+                  internal_id
+                  vertex_type
+                  vertex_properties{
+                      property_name
+                      property_value{
+                        data_type
+                        property_value
+                      }
+                    }
+                }
+            }
+        }
+        page_info{
+          more
+          token
+        }
+      }	
+  }
+}
+'''
+
+GET_EDGE_CONNECTOR = '''
+ query getEdges($internal_id:ID!, $token: ID){
+  edges(internal_id: $internal_id, token: $token){
+    edges{
+      inbound{
+        edge_label
+        from_vertex{
+          vertex_type
+          internal_id
+          vertex_properties{
+            property_name
+            property_value{
+              property_value
+            }
+          }
+        }
+      }
+      outbound{
+        edge_label
+        to_vertex{
+           vertex_type
+          internal_id
+          	vertex_properties{
+            	property_name
+            	property_value{
+              	property_value
+            	}
+          }
+        }
+      }
+    }
+    page_info{
+      token
+      more
+    }
+  }
+}
+'''

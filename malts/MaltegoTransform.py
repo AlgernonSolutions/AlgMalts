@@ -125,6 +125,7 @@ class MaltegoTransform(object):
     values = {}
 
     def __init__(self):
+        self._id_values = []
         self.values = {}
         self.value = None
 
@@ -151,6 +152,7 @@ class MaltegoTransform(object):
 
     def addEntity(self, entity_type, entity_value):
         me = MaltegoEntity(entity_type, entity_value)
+        self._id_values.append(entity_value)
         self.addEntityToMessage(me)
         return self.entities[len(self.entities) - 1]
 
@@ -204,8 +206,13 @@ class MaltegoTransform(object):
     def debug(self, msg):
         self.writeSTDERR("D:" + str(msg))
 
+    def __contains__(self, item):
+        return item in self._id_values
+
 
 def sanitise(value):
+    if not value:
+        return value
     replace_these = ["&", ">", "<"]
     replace_with = ["&amp;", "&gt;", "&lt;"]
     temp_value = value
